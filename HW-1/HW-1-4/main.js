@@ -4,4 +4,4 @@ let middle_Name = prompt("Введить Ваше Ім'я по-батькові"
 let age = prompt("Введить Ваш вік", "45");
 // console.log(name + " " + middle_Name + " " + age);
 // или
-console.log(`${name} ${middle_Name} ${age}`)
+console.log(`${name} ${middle_Name} ${age}`);
