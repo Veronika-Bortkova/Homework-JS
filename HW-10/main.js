@@ -75,28 +75,27 @@ let divArr10 = document.createElement("div");
 document.body.append(divArr10);
 divArr10.className = "wrapper";
 for (let i = 0; i < 10; i++) {
-    let divItem = document.createElement("div");
-    divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
-    divArr10.append(divItem);
-    localStorage.setItem("numberKey", i);
+        let divItem = document.createElement("div");
+        divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
+        divArr10.append(divItem);
 }
-
+localStorage.setItem("numberKey", 0);
 let lastIndexBlock = +localStorage.getItem("numberKey");
 let buttonNext = document.getElementById("next");
 buttonNext.addEventListener("click", function (){
     if (divArr10) divArr10.innerHTML = "";
-    if (89>lastIndexBlock) {
+    if (90>lastIndexBlock) {
         lastIndexBlock = lastIndexBlock+10;
         localStorage.setItem("numberKey", lastIndexBlock);
-        for (let i = lastIndexBlock + 1; i < lastIndexBlock + 11; i++) {
+        for (let i = lastIndexBlock; i < lastIndexBlock + 10; i++) {
             let divItem = document.createElement("div");
             divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
             divArr10.append(divItem);
         }
     }
     else {
-        lastIndexBlock = 89;//роблю для того, щоб при клике на кнопку некст, коли массив закінчиться на екрані залишався останній блок
-        for (let i = lastIndexBlock + 1; i < lastIndexBlock + 11; i++) {
+        lastIndexBlock = 90;//роблю для того, щоб при клике на кнопку некст, коли массив закінчиться на екрані залишався останній блок
+        for (let i = lastIndexBlock; i < lastIndexBlock + 10; i++) {
             let divItem = document.createElement("div");
             divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
             divArr10.append(divItem);
@@ -110,7 +109,7 @@ buttonPrev.addEventListener("click", function (){
     if (lastIndexBlock>9) {
         lastIndexBlock = lastIndexBlock-10;
         localStorage.setItem("numberKey", lastIndexBlock);
-        for (let i = lastIndexBlock + 1; i <= lastIndexBlock+10; i++) {
+        for (let i = lastIndexBlock; i < lastIndexBlock+10; i++) {
             let divItem = document.createElement("div");
             divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
             divArr10.append(divItem);
@@ -123,6 +122,8 @@ buttonPrev.addEventListener("click", function (){
             divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
             divArr10.append(divItem);
         }
+        lastIndexBlock = 0;
+        localStorage.setItem("numberKey", lastIndexBlock);
     }
 });
 
