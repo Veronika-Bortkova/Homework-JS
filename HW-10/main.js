@@ -61,6 +61,13 @@ else if (time.getTime() > +oldTime + 10000) {
 // При натисканні next виводяться наступні 10 об’єктів
 //
 // При натисканні prev виводяться попередні 10 об’єктів
+function creating_10_blocks() {
+    for (let i = lastIndexBlock; i < lastIndexBlock + 10; i++) {
+    let divItem = document.createElement("div");
+    divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
+    divArr10.append(divItem);
+    }
+};
 
 let arr = [];
 for (let i = 1; i < 101; i++) {
@@ -87,19 +94,11 @@ buttonNext.addEventListener("click", function (){
     if (90>lastIndexBlock) {
         lastIndexBlock = lastIndexBlock+10;
         localStorage.setItem("numberKey", lastIndexBlock);
-        for (let i = lastIndexBlock; i < lastIndexBlock + 10; i++) {
-            let divItem = document.createElement("div");
-            divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
-            divArr10.append(divItem);
-        }
+        creating_10_blocks();
     }
     else {
         lastIndexBlock = 90;//роблю для того, щоб при клике на кнопку некст, коли массив закінчиться на екрані залишався останній блок
-        for (let i = lastIndexBlock; i < lastIndexBlock + 10; i++) {
-            let divItem = document.createElement("div");
-            divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
-            divArr10.append(divItem);
-        }
+        creating_10_blocks();
     }
 });
 
@@ -109,12 +108,7 @@ buttonPrev.addEventListener("click", function (){
     if (lastIndexBlock>9) {
         lastIndexBlock = lastIndexBlock-10;
         localStorage.setItem("numberKey", lastIndexBlock);
-        for (let i = lastIndexBlock; i < lastIndexBlock+10; i++) {
-            let divItem = document.createElement("div");
-            divItem.innerText = `id - ${arr[i].id}  name - ${arr[i].name}`;
-            divArr10.append(divItem);
-        }
-        //lastIndexBlock = lastIndexBlock-10;
+        creating_10_blocks();
     } else {
         lastIndexBlock = 9;//роблю для того, щоб при клике на кнопку prev, коли массив дойде до початку на екрані залишався перший блок
         for (let i = 0; i < 10; i++) {
@@ -129,3 +123,4 @@ buttonPrev.addEventListener("click", function (){
 
 let divTask3 = document.getElementById("wrapper3");
 divTask3.append(divArr10);
+
